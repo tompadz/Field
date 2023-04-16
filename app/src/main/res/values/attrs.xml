@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTextInputLayout">
+        <attr name="fieldTitle" format="string"/>
+        <attr name="fieldHint" format="string"/>
+        <attr name="fieldError" format="string"/>
+        <attr name="fieldHelper" format="string"/>
+        <attr name="fieldEditable" format="boolean"/>
+        <attr name="fieldInputValue" format="string"/>
+    </declare-styleable>
+</resources>

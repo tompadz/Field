@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.dapadz.field.DeltaDatePicker
+    <com.dapadz.field.Keyboard
         android:id="@+id/testDate"
+        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

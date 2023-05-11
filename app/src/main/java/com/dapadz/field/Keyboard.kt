@@ -2,6 +2,7 @@ package com.dapadz.field
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -34,6 +35,8 @@ class Keyboard @JvmOverloads constructor(
     private lateinit var keyboardLinearLayout : LinearLayout
 
     private var actionClickListener: KeyboardActionClickListener? = null
+    private var isLeftIconSetup = false
+    private var isRightIconSetup = false
 
     private val keyboardArray = arrayOf(
         byteArrayOf(1,  2,  3),
@@ -62,11 +65,13 @@ class Keyboard @JvmOverloads constructor(
         addView(keyboardLinearLayout)
     }
 
-    fun setLeftActionIcon(@DrawableRes res: Int) {
+    fun setLeftActionIcon(@DrawableRes res: Int?) {
+        isLeftIconSetup = res != null
         updateActionIcon(LEFT_ACTION_ID, res)
     }
 
-    fun setRightActionIcon(@DrawableRes res: Int) {
+    fun setRightActionIcon(@DrawableRes res: Int?) {
+        isRightIconSetup = res != null
         updateActionIcon(RIGHT_ACTION_ID, res)
     }
 
@@ -74,7 +79,7 @@ class Keyboard @JvmOverloads constructor(
         actionClickListener = listener
     }
 
-    private fun updateActionIcon(id: Byte, @DrawableRes res: Int) {
+    private fun updateActionIcon(id: Byte, @DrawableRes res: Int?) {
         val actionLinearLayout = keyboardLinearLayout.children.last() as LinearLayout
         actionLinearLayout.forEach {
             it as KeyboardKey
@@ -116,15 +121,17 @@ class Keyboard @JvmOverloads constructor(
         private val DEFAULT_PADDING = 16.dp
         private val DEFAULT_MARGIN = 1.dp
 
-        private lateinit var textView : TextView
-        lateinit var iconView : ImageView
+        private var textView : TextView? = null
+        private var iconView : ImageView? = null
 
         val isActionButton get() = key == LEFT_ACTION_ID || key == RIGHT_ACTION_ID
-        val isHaveIcon get() = iconView.drawable != null
+        val isHaveIcon get() = iconView?.drawable != null
+        val isHaveText get() = textView?.text?.isNotBlank()
 
         init {
             initializeRootView()
             if (isActionButton) createIconView() else createTextView()
+            setupClickListener()
         }
 
         private fun initializeRootView() {
@@ -135,12 +142,7 @@ class Keyboard @JvmOverloads constructor(
             ).apply {
                 setMargins(DEFAULT_MARGIN)
             }
-            setClickableAnimation()
             setCornerRadius(5f.dp)
-            setOnClickListener {
-                makeVibrateFeedback()
-                if (isActionButton) checkActionClick() else onKeyClick()
-            }
         }
 
         private fun createTextView() {
@@ -163,9 +165,24 @@ class Keyboard @JvmOverloads constructor(
             addView(iconView)
         }
 
-        fun setIcon(@DrawableRes res: Int) {
-            with(iconView) {
-                if (isHaveIcon) updateImageViewImageAnimated(res) else setImageResource(res)
+        fun setIcon(@DrawableRes res: Int?) {
+            iconView?.let {
+                val drawable: Drawable? = if (res == null) null else context.getCompatDrawable(res)
+                if (isHaveIcon) it.updateImageViewImageAnimated(drawable) else it.setImageDrawable(drawable)
+                setupClickListener()
+            }
+        }
+
+        fun setupClickListener() {
+            if (isHaveIcon || isHaveText == true) {
+                setClickableAnimation()
+                setOnClickListener {
+                    makeVibrateFeedback()
+                    if (isActionButton) checkActionClick() else onKeyClick()
+                }
+            } else {
+                setOnClickListener(null)
+                disableClickAnimation()
             }
         }
 
@@ -184,6 +201,10 @@ class Keyboard @JvmOverloads constructor(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
                 performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS)
             } //todo
+        }
+
+        private fun disableClickAnimation() {
+            foreground = null
         }
 
         private fun View.setParams() {

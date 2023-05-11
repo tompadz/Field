@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         picker.setRightActionIcon(R.drawable.baseline_arrow_back_24)
         picker.setActionClickListener(object : KeyboardActionClickListener {
             override fun onRightActionClick() {
-                val icon = if (a) R.drawable.baseline_close_24 else R.drawable.baseline_arrow_back_24
+                val icon = if (a) R.drawable.baseline_close_24 else null
                 picker.setRightActionIcon(icon)
                 a = !a
             }

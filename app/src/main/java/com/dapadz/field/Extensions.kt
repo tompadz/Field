@@ -63,12 +63,7 @@ fun View.setCornerRadius(radius: Float) {
     clipToOutline = true
 }
 
-fun ImageView.updateImageViewImageAnimated(@DrawableRes newIcon : Int) {
-    val drawable = ContextCompat.getDrawable(context, newIcon) ?: return
-    updateImageViewImageAnimated(drawable)
-}
-
-fun ImageView.updateImageViewImageAnimated(newIcon: Drawable) {
+fun ImageView.updateImageViewImageAnimated(newIcon: Drawable?) {
     if (drawable == newIcon) {
         return
     }

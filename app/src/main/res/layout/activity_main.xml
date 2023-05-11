@@ -1,10 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:layout_height="wrap_content">
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.dapadz.field.SkeletonView
+                android:layout_width="match_parent"
+                android:layout_height="14dp"/>
+
+            <com.dapadz.field.SkeletonView
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="120dp"/>
+
+            <com.dapadz.field.SkeletonView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="4"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="2"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+            </LinearLayout>
+
+
+            <com.dapadz.field.SkeletonView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="150dp"
+                android:layout_height="14dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:layout_marginTop="140dp"
+        android:layout_height="wrap_content">
+
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="80dp"
+            android:layout_height="98dp"
+            android:layout_marginEnd="16dp"/>
+
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="80dp"
+            android:layout_height="98dp"
+            android:layout_marginEnd="16dp"/>
+
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="80dp"
+            android:layout_height="98dp"
+            android:layout_marginEnd="16dp"/>
+
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="80dp"
+            android:layout_height="98dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:layout_marginTop="270dp"
+        android:layout_height="wrap_content">
+
+        <com.dapadz.field.SkeletonView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.dapadz.field.SkeletonView
+                android:layout_width="match_parent"
+                android:layout_height="14dp"/>
+
+            <com.dapadz.field.SkeletonView
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="120dp"/>
+
+            <com.dapadz.field.SkeletonView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="4"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="2"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+                <com.dapadz.field.SkeletonView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"/>
+
+            </LinearLayout>
+
+
+            <com.dapadz.field.SkeletonView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="150dp"
+                android:layout_height="14dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <com.dapadz.field.Keyboard
         android:id="@+id/testDate"
